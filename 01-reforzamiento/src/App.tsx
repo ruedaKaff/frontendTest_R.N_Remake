@@ -1,5 +1,7 @@
-import { useEffect, useReducer } from "react";
-import { Login } from "./components/Login";
+
+// import { Login } from "./components/Login";
+
+import { Usuarios } from "./components/Usuarios";
 
 
 
@@ -16,7 +18,8 @@ const App = () => {
       {/* <Funciones></Funciones> */}
       {/* <Contador/> */}
       {/* <ContadorConHook/> */}
-      <Login />
+      {/* <Login /> */}
+      <Usuarios/>
     </div>
   );
 };
