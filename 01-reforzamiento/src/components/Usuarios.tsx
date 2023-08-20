@@ -1,41 +1,43 @@
-import { useEffect, useRef, useState } from "react";
-import { reqResApi } from "../api/reqRes";
-import { ReqResListado, Usuario } from "../interfaces/ireqRes";
+
+import { Usuario } from "../interfaces/ireqRes";
+import { useUsuarios } from "../hooks/useUsuarios";
 
 export const Usuarios = () => {
 
-  const [usuario, setUsuarios] = useState<Usuario[]>([]);
 
-  const pagRef = useRef(0);
-  useEffect(() => {
-    //llamado al api
-   cargarUsuarios();
-  }, []);
+    const { usuario, pagAnterior, pagSiguiente} =useUsuarios();
+//   const [usuario, setUsuarios] = useState<Usuario[]>([]);
+
+//   const pagRef = useRef(0);
+//   useEffect(() => {
+//     //llamado al api
+//    cargarUsuarios();
+//   }, []);
 
 
 
-  const cargarUsuarios = async() =>{
+//   const cargarUsuarios = async() =>{
     
-    const resp = await reqResApi.get<ReqResListado>('/users', {
-        params: {
-            page: pagRef.current
-        }
-    })
-    console.log(pagRef);
+//     const resp = await reqResApi.get<ReqResListado>('/users', {
+//         params: {
+//             page: pagRef.current
+//         }
+//     })
+//     console.log(pagRef);
     
-    // pagRef.current =2;
-    if (resp.data.data.length > 0) {
-        setUsuarios(resp.data.data);
-        pagRef.current ++;
-    }
-    else {
-        alert('No hay mas registros') 
-    }
+//     // pagRef.current =2;
+//     if (resp.data.data.length > 0) {
+//         setUsuarios(resp.data.data);
+//         pagRef.current ++;
+//     }
+//     else {
+//         alert('No hay mas registros') 
+//     }
     
-  }
+//   }
 
   const renderItem = ({
-    avatar,
+    avatar, 
     email,
     first_name,
     id,
@@ -78,8 +80,14 @@ export const Usuarios = () => {
       </table>
 
       <button
+      className="btn btn-primary mx-2"
+      onClick={pagAnterior}
+      >
+        Anteriores
+      </button>
+      <button
       className="btn btn-primary"
-      onClick={cargarUsuarios}
+      onClick={pagSiguiente}
       >
         Siguientes
       </button>
