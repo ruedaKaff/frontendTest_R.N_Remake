@@ -7,14 +7,18 @@
 
 import React from 'react';
 import { View, Text } from 'react-native';
+import { HolaMundoScreen } from './src/screens/HolaMundoScreen';
+import { Contador } from './src/screens/Contador';
 
 
 export const App = () => {
+
   return (
-    <View>
-      <Text>Hola mundo !!!</Text>
-    </View>
+    // <HolaMundoScreen/>
+    <Contador/>
+
   )
+  
 }
 
 export default App;
